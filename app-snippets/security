@@ -1,0 +1,44 @@
+#set $my_remote_addr $binary_remote_addr;
+set $my_remote_addr $http_x_forwarded_for;
+location ~* \.(jpg|jpeg|bmp|png|gif|ico|css|js) {
+#    limit_conn   czone  50;
+#    limit_req zone=rzone burst=50 nodelay;
+    expires 365d;
+}
+
+#limit_conn   czone  20;
+#limit_req zone=rzone burst=20 nodelay;
+
+if ($http_referer ~ "com\/\?XXDD0S") {
+    return 403;
+}
+
+#if ($http_x_forwarded_for ~* "24.240.63.180|119.255.38.162") {
+#        return 406;
+#}
+if ($http_x_forwarded_for ~* (121.224.33.40)) {
+    return 406;
+}
+if ($http_user_agent ~* "Squider|Scrapy" ) {
+    return 406;
+}
+#if ($http_user_agent ~* bingbot ) {
+#   return 403;
+#}
+
+location ~* ^/(stages|META-INF|min|osticket)/$ {
+    return 404;
+}
+
+location /version{
+    auth_basic off;
+    types {}
+    default_type text/plain;
+}
+
+# deny access to .htaccess files, if Apache's document root
+# concurs with nginx's one
+#
+#location ~ /\.ht {
+#    deny  all;
+#}

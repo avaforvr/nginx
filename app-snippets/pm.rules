@@ -1,0 +1,40 @@
+
+#list
+rewrite ^(/..)?/[^\/]*-c([0-9]+)(.*)$ /list.php?cat_id=$2&filter=$3 last;
+
+#detail
+rewrite ^(/..)?/[^\/]*-g([0-9]+)\/?$ /product.php?goods_id=$2 last;
+
+#tag
+rewrite /tag/([^\/]+)\/?$  /tags.php?q=$1 last;
+rewrite /tag/([^\/]+)/([^\/]+)\/?$  /search.php?q=$2 last;
+
+#search
+rewrite /search/([^\/]+)\/?$  /search.php?q=$1 last;
+
+#questions and reviews
+rewrite /reviews\/?$ /viewticket.php last;
+rewrite /reviews\/[^\/]+-c([0-9]+)\/?$ /viewticket.php?cat_id=$1 last;
+rewrite /reviews\/[^\/]+-cid([0-9]+)-p([0-9]+)\/?$ /viewticket.php?cat_id=$1&goods_id=$2&type=reviews last;
+rewrite /qa\/[^\/]+-cid([0-9]+)-q([0-9]+)\/?$ /viewticket.php?cat_id=$1&goods_id=$2&type=qa last;
+
+#promotion
+rewrite /promotion/([^\/]+)\/?$  /promotion.php?code=$1 last;
+rewrite /(wholesale-weekly-deal)\/?(.*)$  /promotion.php?code=$1&filter=$2 last;
+
+#return policy
+rewrite /return\/?$ /about/help.php?page_id=84 last;
+
+#region seo
+rewrite /region\/?$ /region_seo.php last;
+rewrite /region/(\w+)-region\/?$ /region_seo.php?region_code=$1 last;
+rewrite /region\/[^\/]+-state-code-(\w+)-(\w+)\/?$ /region_seo.php?region_code=$1&state_code=$2 last;
+rewrite /region\/[^\/]+-r([0-9]+)\/?$ /region_seo.php?region_id=$1 last;
+rewrite /region\/[^\/]+-r([0-9]+)c([0-9]+)\/?$ /region_seo.php?region_id=$1&cat_id=$2 last;
+
+#activities
+rewrite /(2013-black-friday)\/?$  /black_friday.php?code=$1 last;
+rewrite /(2013-year-end-sale)\/?$  /year_end_sale.php?code=$1 last;
+rewrite /(2014-Prom)\/?$  /promotion/prom.php?code=$1 last;
+rewrite ^/(.*)2013-Christmas-Sale\/?$ /$1christmas_sale.php last;
+rewrite ^/(.*)win-ipad-mini\/?$ /promotion.php?code=winipad last;

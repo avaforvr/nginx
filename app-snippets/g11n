@@ -1,0 +1,11 @@
+if ($host ~* ^(da|ar|be|hr|cs|et|el|ht|he|hu|is|ga|ja|ko|lt|ms|mt|pl|sk|sl|tr)\.) {
+        set $lang_code $1;
+}
+
+if ($host ~* \.(de|fr|se|nl|no|fi|es|pt|ru|cz)$) {
+        set $lang_code $1;
+}
+
+if ($uri ~* ^/(de|fr|es|se|no|da|fi|ru|nl|it|pt|ar|be|hr|cs|et|el|ht|he|hu|is|ga|ja|ko|lt|ms|mt|pl|sk|sl|tr)/) {
+        set $lang_code $1;
+}
