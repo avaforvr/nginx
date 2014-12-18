@@ -1,3 +1,4 @@
+
 #list
 #rewrite ^(/..)?/[^\/]*-c([0-9]+)(.*)$ /list.php?cat_id=$2&filter=$3 last;
 rewrite ^(/..)?/[^\/]*-r([0-9]+)(.*)$ /list.php?route_sn=$2&filter=$3 last;
@@ -20,6 +21,7 @@ rewrite /qa\/[^\/]+-cid([0-9]+)-q([0-9]+)\/?$ /viewticket.php?cat_id=$1&goods_id
 #promotion
 rewrite /promotion/([^\/]+)\/?$  /promotion.php?code=$1 last;
 rewrite /(wholesale-weekly-deal)\/?(.*)$  /promotion.php?code=$1&filter=$2 last;
+rewrite /2014-Christmas-Sale\/(.*)$  /promotion.php?code=christmas-sale&filter=$1$2 last;
 
 #return policy
 rewrite /return\/?$ /about/help.php?page_id=84 last;
@@ -40,6 +42,7 @@ rewrite ^/(.*)win-ipad-mini\/?$ /promotion.php?code=winipad last;
 
 #footer help
 rewrite "(?i)/(?:[A-Za-z]{2}\/)?about-us\.html$" /about/help.php?page_id=2 last;
+rewrite "^(?i)/(?:[A-Za-z]{2}\/)?email.php(.*)" /about/email.php;
 rewrite "(?i)/(?:[A-Za-z]{2}\/)?our-guarantee\.html$" /about/help.php?page_id=5 last;
 rewrite "(?i)/(?:[A-Za-z]{2}\/)?terms-and-conditions\.html$" /about/help.php?page_id=85 last;
 rewrite "(?i)/(?:[A-Za-z]{2}\/)?contact-us\.html$" /about/help.php?page_id=30 last;
