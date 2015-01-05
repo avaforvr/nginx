@@ -40,6 +40,7 @@ rewrite ^/(.*)win-ipad-mini\/?$ /promotion.php?code=winipad last;
 
 #footer help
 rewrite "(?i)/(?:[A-Za-z]{2}\/)?about-us\.html$" /about/help.php?page_id=2 last;
+rewrite "^(?i)/(?:[A-Za-z]{2}\/)?email.php(.*)" /about/email.php;
 rewrite "(?i)/(?:[A-Za-z]{2}\/)?our-guarantee\.html$" /about/help.php?page_id=5 last;
 rewrite "(?i)/(?:[A-Za-z]{2}\/)?terms-and-conditions\.html$" /about/help.php?page_id=85 last;
 rewrite "(?i)/(?:[A-Za-z]{2}\/)?contact-us\.html$" /about/help.php?page_id=30 last;
