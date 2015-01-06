@@ -38,6 +38,7 @@ rewrite /(2013-year-end-sale)\/?$  /year_end_sale.php?code=$1 last;
 rewrite /(2014-Prom)\/?$  /promotion/prom.php?code=$1 last;
 rewrite ^/(.*)2013-Christmas-Sale\/?$ /$1christmas_sale.php last;
 rewrite ^/(.*)win-ipad-mini\/?$ /promotion.php?code=winipad last;
+rewrite /2015-New-Year-Collection\/?(.*)$  /promotion.php?code=newyear-sale&filter=$1 last;
 
 #footer help
 rewrite "(?i)/(?:[A-Za-z]{2}\/)?about-us\.html$" /about/help.php?page_id=2 last;

@@ -22,6 +22,7 @@ rewrite /qa\/[^\/]+-cid([0-9]+)-q([0-9]+)\/?$ /viewticket.php?cat_id=$1&goods_id
 rewrite /promotion/([^\/]+)\/?$  /promotion.php?code=$1 last;
 rewrite /(wholesale-weekly-deal)\/?(.*)$  /promotion.php?code=$1&filter=$2 last;
 rewrite /2014-Christmas-Sale\/(.*)$  /promotion.php?code=christmas-sale&filter=$1$2 last;
+rewrite /2015-New-Year-Collection\/?(.*)$  /promotion.php?code=newyear-sale&filter=$1 last;
 
 #return policy
 rewrite /return\/?$ /about/help.php?page_id=84 last;
