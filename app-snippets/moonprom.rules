@@ -3,7 +3,7 @@
 rewrite ^(/..)?/[^\/]*-c([0-9]+)(.*)$ /list.php?cat_id=$2&filter=$3 last;
 rewrite ^(/..)?/[^\/]*-r([0-9]+)(.*)$ /list.php?route_sn=$2&filter=$3 last;
 #detail
-rewrite ^(/..)?/[^\/]*-g([0-9]+)\/?$ /product.php?goods_id=$2 last;
+rewrite ^(/..)?/[^\/]*-m([0-9]+)\/?$ /product.php?goods_id=$2 last;
 
 #tag
 rewrite /tag/([^\/]+)\/?$  /tags.php?q=$1 last;

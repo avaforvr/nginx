@@ -55,6 +55,7 @@ rewrite "(?i)/(?:[A-Za-z]{2}\/)?delivery-time\.html$" /about/help.php?page_id=11
 rewrite "(?i)/(?:[A-Za-z]{2}\/)?return-policy\.html$" /about/help.php?page_id=84 last;
 rewrite "(?i)/(?:[A-Za-z]{2}\/)?color-chart\.html$" /about/help.php?tag=color_chart&page_id=-1 last;
 rewrite "(?i)/(?:[A-Za-z]{2}\/)?size-chart\.html$" /about/help.php?tag=size_chart&page_id=-2 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?payment-methods\.html$" /about/help.php?&page_id=107 last;
 
 #other
 if (!-e $request_filename) {
