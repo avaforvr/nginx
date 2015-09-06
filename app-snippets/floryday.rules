@@ -45,7 +45,6 @@ rewrite "^(?i)/(?:[A-Za-z]{2}\/)?email.php(.*)" /about/email.php;
 rewrite "(?i)/(?:[A-Za-z]{2}\/)?our-guarantee\.html$" /about/help.php?page_id=172 last;
 rewrite "(?i)/(?:[A-Za-z]{2}\/)?terms-and-conditions\.html$" /about/help.php?page_id=179 last;
 rewrite "(?i)/(?:[A-Za-z]{2}\/)?contact-us\.html$" /about/email.php?type=pre_sales&code=contact last;
-#rewrite "(?i)/(?:[A-Za-z]{2}\/)?contact-us\.html$" /about/help.php?page_id=177 last;
 rewrite "(?i)/(?:[A-Za-z]{2}\/)?live-chat\.html$" /about/help.php?page_id=173 last;
 rewrite "(?i)/(?:[A-Za-z]{2}\/)?faqs\.html$" /about/help.php?page_id=174 last;
 rewrite "(?i)/(?:[A-Za-z]{2}\/)?shipping-guide\.html$" /about/help.php?page_id=175 last;
