@@ -24,6 +24,7 @@ rewrite /(wholesale-weekly-deal)\/?(.*)$  /promotion.php?code=$1&filter=$2 last;
 rewrite /2014-Christmas-Sale\/(.*)$  /promotion.php?code=christmas-sale&filter=$1$2 last;
 rewrite /2015-New-Year-Collection\/?(.*)$  /promotion.php?code=newyear-sale&filter=$1 last;
 rewrite /sale\/?(.*)$  /promotion.php?code=sale last;
+rewrite /buyer_show\/?(.*)$  /promotion.php?code=buyer_show last;
 
 #return policy
 rewrite /return\/?$ /about/help.php?page_id=84 last;
