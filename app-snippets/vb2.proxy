@@ -1,13 +1,13 @@
 rewrite ^/Prom-Dresses-2013-c18/(.*)$ /Prom-Dresses-c18/$1 permanent;
 rewrite ^/2014-Presidents-Day-Sale\/?$ /presidents_day_sale.php last;
 rewrite ^/userfiles/(.*)$ http://d3bvl598xc7qos.cloudfront.net/upimg/userfiles/$1;
-rewrite ^/contact$ http://www.vbridal.com/about/help.php?page_id=30;
-rewrite ^/affiliate$ http://www.vbridal.com/about/help.php?page_id=104;
-rewrite ^/affiliate_faq$ http://www.vbridal.com/about/help.php?page_id=105;
+rewrite ^/contact$ http://www.vbridal.net/about/help.php?page_id=30;
+rewrite ^/affiliate$ http://www.vbridal.net/about/help.php?page_id=104;
+rewrite ^/affiliate_faq$ http://www.vbridal.net/about/help.php?page_id=105;
 
 location ~* (/UK-|/[^\/]+-[cgia]([0-9]+)|/wholesale-weekly-deal|/region/|/reviews/|/tag/|about/help.php|sitemap.php|search.php|2013-black-friday|2014-Presidents-Day-Sale|2014-Prom) {
     if ($arg_full_site = "true") {
-        add_header Set-Cookie "full_site=true;Domain=.vbridal.com;Path=/;Max-Age=86400";
+        add_header Set-Cookie "full_site=true;Domain=.vbridal.net;Path=/;Max-Age=86400";
     }
     proxy_pass              http://vbridal_backend;
     proxy_redirect          off;
@@ -45,7 +45,7 @@ location /pay_notify.php {
 
 location / {
     if ($arg_full_site = "true") {
-        add_header Set-Cookie "full_site=true;Domain=.vbridal.com;Path=/;Max-Age=86400";
+        add_header Set-Cookie "full_site=true;Domain=.vbridal.net;Path=/;Max-Age=86400";
     }
     proxy_pass              http://vbridal_backend;
     proxy_redirect          off;
