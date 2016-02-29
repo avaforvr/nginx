@@ -1,9 +1,11 @@
+rewrite /sale\/?(.*)$  /promotion.php?code=sale last;
 
 #list
 rewrite ^(/..)?/[^\/]*-c([0-9]+)(.*)$ /list.php?cat_id=$2&filter=$3 last;
 rewrite ^(/..)?/[^\/]*-r([0-9]+)(.*)$ /list.php?route_sn=$2&filter=$3 last;
 #detail
 rewrite ^(/..)?/[^\/]*-m([0-9]+)\/?$ /product.php?goods_id=$2 last;
+rewrite ^(/..)?/erp-g([0-9]+)\/?$ /product.php?goods_id=$2&from=erp last;
 
 #tag
 rewrite /tag/([^\/]+)\/?$  /tags.php?q=$1 last;
@@ -40,18 +42,13 @@ rewrite ^/(.*)2013-Christmas-Sale\/?$ /$1christmas_sale.php last;
 rewrite ^/(.*)win-ipad-mini\/?$ /promotion.php?code=winipad last;
 
 #footer help
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?about-us\.html$" /about/help.php?page_id=171 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?about-us\.html$" /about/help.php?page_id=181 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?terms-and-conditions\.html$" /about/help.php?page_id=182 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?privacy-policy\.html$" /about/help.php?page_id=183 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?contact-us\.html$" /about/help.php?page_id=184 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?return-policy\.html$" /about/help.php?page_id=185 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?faqs\.html$" /about/help.php?page_id=186 last;
 rewrite "^(?i)/(?:[A-Za-z]{2}\/)?email.php(.*)" /about/email.php;
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?our-guarantee\.html$" /about/help.php?page_id=172 last;
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?terms-and-conditions\.html$" /about/help.php?page_id=179 last;
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?contact-us\.html$" /about/email.php?type=pre_sales&code=contact last;
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?live-chat\.html$" /about/help.php?page_id=173 last;
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?faqs\.html$" /about/help.php?page_id=174 last;
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?shipping-guide\.html$" /about/help.php?page_id=175 last;
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?delivery-time\.html$" /about/help.php?page_id=176 last;
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?return-policy\.html$" /about/help.php?page_id=178 last;
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?color-chart\.html$" /about/help.php?tag=color_chart&page_id=-1 last;
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?size-chart\.html$" /about/help.php?tag=size_chart&page_id=-2 last;
 
 #匹配其他
 if (!-e $request_filename) {
