@@ -1,5 +1,8 @@
 rewrite /sale\/?(.*)$  /promotion.php?code=sale last;
 
+#category
+rewrite ^(/..)?/[^\/]*-cr([0-9]+)(.*)$ /category.php?route_sn=$2&filter=$3 last;
+
 #list
 rewrite ^(/..)?/[^\/]*-c([0-9]+)(.*)$ /list.php?cat_id=$2&filter=$3 last;
 rewrite ^(/..)?/[^\/]*-r([0-9]+)(.*)$ /list.php?route_sn=$2&filter=$3 last;
@@ -49,8 +52,10 @@ rewrite "(?i)/(?:[A-Za-z]{2}\/)?contact-us\.html$" /about/help.php?page_id=184 l
 rewrite "(?i)/(?:[A-Za-z]{2}\/)?return-policy\.html$" /about/help.php?page_id=185 last;
 rewrite "(?i)/(?:[A-Za-z]{2}\/)?faqs\.html$" /about/help.php?page_id=186 last;
 rewrite "^(?i)/(?:[A-Za-z]{2}\/)?email.php(.*)" /about/email.php;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?payment-methods\.html$" /about/help.php?page_id=189 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?measuring-guide\.html$" /about/help.php?page_id=190 last;
 
-#匹配其他
+#other
 if (!-e $request_filename) {
 	#rewrite (?i)/([^\/]+)\/?(.*)$ /list.php?route=$1&filter=$2 last;
 	#rewrite (?i)/(?:de\/)?([^\/]+)\/?(.*)$ /list.php?route=$1&filter=$2 last;
