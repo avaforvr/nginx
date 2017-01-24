@@ -1,0 +1,58 @@
+rewrite ^/Prom-Dresses-2013-c18/(.*)$ /Prom-Dresses-c18/$1 permanent;
+rewrite ^/2014-Presidents-Day-Sale\/?$ /presidents_day_sale.php last;
+rewrite ^/userfiles/(.*)$ http://d3bvl598xc7qos.cloudfront.net/upimg/userfiles/$1;
+rewrite ^/contact$ http://www.moonprom.com/about/help.php?page_id=30;
+rewrite ^/affiliate$ http://www.moonprom.com/about/help.php?page_id=104;
+rewrite ^/affiliate_faq$ http://www.moonprom.com/about/help.php?page_id=105;
+
+location ~* (/UK-|/[^\/]+-[cgia]([0-9]+)|/wholesale-weekly-deal|/region/|/reviews/|/tag/|about/help.php|sitemap.php|search.php|2013-black-friday|2014-Presidents-Day-Sale|2014-Prom) {
+    if ($arg_full_site = "true") {
+        add_header Set-Cookie "full_site=true;Domain=.moonprom.com;Path=/;Max-Age=86400";
+    }
+    proxy_pass              http://moonprom_backend;
+    proxy_redirect          off;
+    proxy_set_header        Host            $host;
+    proxy_set_header        X-Port          $server_port;
+    proxy_set_header        X-Real-IP       $remote_addr;
+    proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_ignore_client_abort on;
+##proxy_next_upstream error timeout invalid_header http_500 http_503;
+    proxy_next_upstream http_502 http_504 error timeout invalid_header;
+    proxy_no_cache $cookie_preview $cache_disabled;
+    proxy_cache_bypass $cookie_preview $cache_disabled;
+#    proxy_cache        cache_one;
+    proxy_cache_valid  200 304 3h;
+    proxy_cache_valid  301 302 1h;
+    proxy_cache_key    http://moonprom-$cookie_JJCID-$cookie_abTest-$uri$is_args$args;
+#proxy_ignore_headers "Cache-Control" "Expires" "Set-Cookie";
+    proxy_ignore_headers "Cache-Control" "Expires";
+    proxy_store off;
+}
+
+location /pay_notify.php {
+    auth_basic off;
+    proxy_pass              http://moonprom_backend;
+    proxy_redirect          off;
+    proxy_set_header        Host            $host;
+    proxy_set_header        X-Port          $server_port;
+    proxy_set_header        X-Real-IP       $remote_addr;
+    proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_ignore_client_abort on;
+    proxy_next_upstream http_502 http_504 http_500 error timeout invalid_header;
+}
+
+#location ~* (cart.php|ajax.php|account/|pay_notify.php|pay_return.php|register.php|login.php|checkout.php|goods.php|subscribe.php|\?currency=|email.php|export_lang.php|/version|no_cache=true) {#}
+
+location / {
+    if ($arg_full_site = "true") {
+        add_header Set-Cookie "full_site=true;Domain=.moonprom.com;Path=/;Max-Age=86400";
+    }
+    proxy_pass              http://moonprom_backend;
+    proxy_redirect          off;
+    proxy_set_header        Host            $host;
+    proxy_set_header        X-Port          $server_port;
+    proxy_set_header        X-Real-IP       $remote_addr;
+    proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_ignore_client_abort on;
+    proxy_next_upstream http_502 http_504 http_500 error timeout invalid_header;
+}
