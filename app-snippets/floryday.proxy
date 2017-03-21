@@ -9,7 +9,7 @@ location ~* (/UK-|/[^\/]+-[cgia]([0-9]+)|/wholesale-weekly-deal|/region/|/review
     if ($arg_full_site = "true") {
         add_header Set-Cookie "full_site=true;Domain=.moonprom.com;Path=/;Max-Age=86400";
     }
-    proxy_pass              http://moonprom_backend;
+    proxy_pass              http://floryday_backend;
     proxy_redirect          off;
     proxy_set_header        Host            $host;
     proxy_set_header        X-Port          $server_port;
@@ -31,7 +31,7 @@ location ~* (/UK-|/[^\/]+-[cgia]([0-9]+)|/wholesale-weekly-deal|/region/|/review
 
 location /pay_notify.php {
     auth_basic off;
-    proxy_pass              http://moonprom_backend;
+    proxy_pass              http://floryday_backend;
     proxy_redirect          off;
     proxy_set_header        Host            $host;
     proxy_set_header        X-Port          $server_port;
@@ -47,7 +47,7 @@ location / {
     if ($arg_full_site = "true") {
         add_header Set-Cookie "full_site=true;Domain=.moonprom.com;Path=/;Max-Age=86400";
     }
-    proxy_pass              http://moonprom_backend;
+    proxy_pass              http://floryday_backend;
     proxy_redirect          off;
     proxy_set_header        Host            $host;
     proxy_set_header        X-Port          $server_port;

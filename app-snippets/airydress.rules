@@ -56,16 +56,18 @@ rewrite ^/(.*)2013-Christmas-Sale\/?$ /$1christmas_sale.php last;
 rewrite ^/(.*)win-ipad-mini\/?$ /promotion.php?code=winipad last;
 
 #footer help
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?about-us\.html$" /about/help.php?page_id=181 last;
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?terms-and-conditions\.html$" /about/help.php?page_id=182 last;
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?privacy-policy\.html$" /about/help.php?page_id=183 last;
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?contact-us\.html$" /about/help.php?page_id=184 last;
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?return-policy\.html$" /about/help.php?page_id=185 last;
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?faqs\.html$" /about/help.php?page_id=186 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?about-us\.html$" /about/help.php?page_id=193 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?terms-and-conditions\.html$" /about/help.php?page_id=194 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?privacy-policy\.html$" /about/help.php?page_id=195 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?faqs\.html$" /about/help.php?page_id=196 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?how-to-measure\.html$" /about/help.php?page_id=197 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?how-to-order\.html$" /about/help.php?page_id=198 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?how-to-track\.html$" /about/help.php?page_id=199 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?contact-us\.html$" /about/help.php?page_id=203 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?payment-method\.html$" /about/help.php?page_id=200 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?shipping-info\.html$" /about/help.php?page_id=201 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?return-policy\.html$" /about/help.php?page_id=202 last;
 rewrite "^(?i)/(?:[A-Za-z]{2}\/)?email.php(.*)" /about/email.php;
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?payment-methods\.html$" /about/help.php?page_id=189 last;
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?measuring-guide\.html$" /about/help.php?page_id=190 last;
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?how-to-place-an-order\.html$" /about/help.php?page_id=191 last;
 
 #other
 if (!-e $request_filename) {
