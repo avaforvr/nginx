@@ -67,6 +67,7 @@ rewrite "(?i)/(?:[A-Za-z]{2}\/)?contact-us\.html$" /about/help.php?page_id=203 l
 rewrite "(?i)/(?:[A-Za-z]{2}\/)?payment-method\.html$" /about/help.php?page_id=200 last;
 rewrite "(?i)/(?:[A-Za-z]{2}\/)?shipping-info\.html$" /about/help.php?page_id=201 last;
 rewrite "(?i)/(?:[A-Za-z]{2}\/)?return-policy\.html$" /about/help.php?page_id=202 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?track-info\.html$"   /track_info.php?page_id=203 last;
 rewrite "^(?i)/(?:[A-Za-z]{2}\/)?email.php(.*)" /about/email.php;
 
 #other
