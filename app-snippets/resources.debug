@@ -8,6 +8,9 @@ location ~* ^/public/[a-zA-Z]+/js/(languages|vendor) {
 location ~* ^/public/[a-zA-Z]+/(js|css) {
     proxy_pass http://${theme}_devnode;
 }
+location ~* ^/public/[a-zA-Z]+/amp/css {
+    proxy_pass http://${theme}_devnode;
+}
 location ~* ^/public {
     root $prjroot;
 }
