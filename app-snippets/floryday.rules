@@ -68,6 +68,7 @@ rewrite "^(?i)/(?:[A-Za-z]{2}\/)?email.php(.*)" /about/email.php;
 rewrite "(?i)/(?:[A-Za-z]{2}\/)?payment-methods\.html$" /about/help.php?page_id=189 last;
 rewrite "(?i)/(?:[A-Za-z]{2}\/)?measuring-guide\.html$" /about/help.php?page_id=190 last;
 rewrite "(?i)/(?:[A-Za-z]{2}\/)?how-to-place-an-order\.html$" /about/help.php?page_id=191 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?track-info\.html$" /track_info.php last;
 
 #other
 if (!-e $request_filename) {
