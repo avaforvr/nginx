@@ -1,0 +1,2 @@
+set $domain themis;
+set $theme  themis;
