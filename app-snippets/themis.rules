@@ -1,0 +1,81 @@
+rewrite /booking\/?(.*)$  /booklist.php last;
+rewrite /sale\/?(.*)$  /promotion.php?code=sale last;
+
+#category
+rewrite ^(/..)?/[^\/]*-cr([0-9]+)(.*)$ /category.php?route_sn=$2&filter=$3 last;
+
+#list
+rewrite ^(/..)?/[^\/]*-c([0-9]+)(.*)$ /list.php?cat_id=$2&filter=$3 last;
+rewrite ^(/..)?/[^\/]*-r([0-9]+)(.*)$ /list.php?route_sn=$2&filter=$3 last;
+rewrite ^(/..)?/amp/[^\/]*-r([0-9]+)(.*)$ /amp/list.php?route_sn=$2&filter=$3 last;
+
+#group list
+rewrite ^(/..)?/[^\/]*-gl([0-9]+)(.*)$ /group/list.php?group_type=$2&filter=$3 last;
+
+#detail
+rewrite ^(/..)?/amp/[^\/]*-m([0-9]+)\/?$ /amp/product.php?goods_id=$2 last;
+rewrite ^(/..)?/[^\/]*-m([0-9]+)\/?$ /product.php?goods_id=$2 last;
+rewrite ^(/..)?/erp-g([0-9]+)\/?$ /product.php?goods_id=$2&from=erp last;
+rewrite ^(/..)?/[^\/]*-gd([0-9]+)\/?$ /group/detail.php?group_id=$2 last;
+rewrite ^(/..)?/[^\/]*-go([0-9]+)\/?$ /group/detail.php?group_pc_id=$2 last;
+rewrite ^(/..)?/[^\/]*-gs([0-9]+)\/?$ /group/status.php?group_pc_id=$2 last;
+
+#webMoney_success .floryday.com/merchantReference/029588035629/payment/globalCollect_result.php
+rewrite ^(/..)?/payment/merchantReference-os([0-9]+)/globalCollect_result.php\/?$ /payment/globalCollect_result.php?merchantReference=$2 last;
+
+#tag
+rewrite /tag/([^\/]+)\/?$  /tags.php?q=$1 last;
+rewrite /tag/([^\/]+)/([^\/]+)\/?$  /search.php?q=$2 last;
+
+#search
+rewrite /search/([^\/]+)\/?$  /search.php?q=$1 last;
+
+#questions and reviews
+rewrite /reviews\/?$ /viewticket.php last;
+rewrite /reviews\/[^\/]+-c([0-9]+)\/?$ /viewticket.php?cat_id=$1 last;
+rewrite /reviews\/[^\/]+-cid([0-9]+)-p([0-9]+)\/?$ /viewticket.php?cat_id=$1&goods_id=$2&type=reviews last;
+rewrite /qa\/[^\/]+-cid([0-9]+)-q([0-9]+)\/?$ /viewticket.php?cat_id=$1&goods_id=$2&type=qa last;
+
+#promotion
+rewrite /promotion/([^\/]+)\/?$  /promotion.php?code=$1 last;
+rewrite /(wholesale-weekly-deal)\/?(.*)$  /promotion.php?code=$1&filter=$2 last;
+
+#return policy
+rewrite /return\/?$ /about/help.php?page_id=84 last;
+
+#region seo
+rewrite /region\/?$ /region_seo.php last;
+rewrite /region/(\w+)-region\/?$ /region_seo.php?region_code=$1 last;
+rewrite /region\/[^\/]+-state-code-(\w+)-(\w+)\/?$ /region_seo.php?region_code=$1&state_code=$2 last;
+rewrite /region\/[^\/]+-r([0-9]+)\/?$ /region_seo.php?region_id=$1 last;
+rewrite /region\/[^\/]+-r([0-9]+)c([0-9]+)\/?$ /region_seo.php?region_id=$1&cat_id=$2 last;
+
+#activities
+rewrite /(2013-black-friday)\/?$  /black_friday.php?code=$1 last;
+rewrite /(2013-year-end-sale)\/?$  /year_end_sale.php?code=$1 last;
+rewrite /(2014-Prom)\/?$  /promotion/prom.php?code=$1 last;
+rewrite ^/(.*)2013-Christmas-Sale\/?$ /$1christmas_sale.php last;
+rewrite ^/(.*)win-ipad-mini\/?$ /promotion.php?code=winipad last;
+
+#footer help
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?about-us\.html$" /about/help.php?page_id=193 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?terms-and-conditions\.html$" /about/help.php?page_id=194 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?privacy-policy\.html$" /about/help.php?page_id=195 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?faqs\.html$" /about/help.php?page_id=196 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?how-to-measure\.html$" /about/help.php?page_id=197 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?how-to-order\.html$" /about/help.php?page_id=198 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?how-to-track\.html$" /about/help.php?page_id=199 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?contact-us\.html$" /about/help.php?page_id=203 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?payment-method\.html$" /about/help.php?page_id=200 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?shipping-info\.html$" /about/help.php?page_id=201 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?return-policy\.html$" /about/help.php?page_id=202 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?track-info\.html$"   /track_info.php?page_id=203 last;
+rewrite "^(?i)/(?:[A-Za-z]{2}\/)?email.php(.*)" /about/email.php;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?points\.html$" /about/help.php?page_id=229 last;
+
+#other
+if (!-e $request_filename) {
+	#rewrite (?i)/([^\/]+)\/?(.*)$ /list.php?route=$1&filter=$2 last;
+	#rewrite (?i)/(?:de\/)?([^\/]+)\/?(.*)$ /list.php?route=$1&filter=$2 last;
+	rewrite "(?i)/(?:[A-Za-z]{2}\/)?([^\/]+)\/?(.*)$" /list.php?route=$1&filter=$2 last;
+}
