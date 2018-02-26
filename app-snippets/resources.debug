@@ -1,7 +1,5 @@
 #backward compatability
-rewrite ^/themes/fashion/(.*) /public/$theme/$1 last;
-rewrite ^/themes/(.*) /public/$1 last;
-rewrite ^/favicon.ico /public/$theme/images/favicon.ico last;
+rewrite ^/favicon.ico /public/a/images/favicon.ico last;
 location ~* ^/public/[a-zA-Z]+/js/(languages|vendor) {
     root $prjroot;
 }
