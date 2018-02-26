@@ -1,13 +1,13 @@
 #backward compatability
-rewrite ^/favicon.ico /public/a/images/favicon.ico last;
+rewrite ^/favicon.ico /public/$theme/images/favicon.ico last;
 location ~* ^/public/[a-zA-Z]+/js/(languages|vendor) {
     root $prjroot;
 }
 location ~* ^/public/[a-zA-Z]+/(js|css|activity) {
-    proxy_pass http://${theme}_devnode;
+    proxy_pass http://${domain}_devnode;
 }
 location ~* ^/public/[a-zA-Z]+/amp/css {
-    proxy_pass http://${theme}_devnode;
+    proxy_pass http://${domain}_devnode;
 }
 location ~* ^/public {
     root $prjroot;
