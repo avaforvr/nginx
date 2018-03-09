@@ -1,5 +1,8 @@
 rewrite /booking\/?(.*)$  /booklist.php last;
 rewrite /sale\/?(.*)$  /promotion.php?code=sale last;
+rewrite /register.php(.*)$ /login.php?act=register last;
+
+rewrite ^(/..)?/(p[0-9]+)(.*)$ /index.php?filter=$2$3 last;
 
 #category
 rewrite ^(/..)?/[^\/]*-cr([0-9]+)(.*)$ /category.php?route_sn=$2&filter=$3 last;
@@ -20,7 +23,6 @@ rewrite ^(/..)?/[^\/]*-gd([0-9]+)\/?$ /group/detail.php?group_id=$2 last;
 rewrite ^(/..)?/[^\/]*-go([0-9]+)\/?$ /group/detail.php?group_pc_id=$2 last;
 rewrite ^(/..)?/[^\/]*-gs([0-9]+)\/?$ /group/status.php?group_pc_id=$2 last;
 
-#webMoney_success .floryday.com/merchantReference/029588035629/payment/globalCollect_result.php
 rewrite ^(/..)?/payment/merchantReference-os([0-9]+)/globalCollect_result.php\/?$ /payment/globalCollect_result.php?merchantReference=$2 last;
 
 #tag
@@ -58,20 +60,13 @@ rewrite ^/(.*)2013-Christmas-Sale\/?$ /$1christmas_sale.php last;
 rewrite ^/(.*)win-ipad-mini\/?$ /promotion.php?code=winipad last;
 
 #footer help
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?about-us\.html$" /about/help.php?page_id=193 last;
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?terms-and-conditions\.html$" /about/help.php?page_id=194 last;
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?privacy-policy\.html$" /about/help.php?page_id=195 last;
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?faqs\.html$" /about/help.php?page_id=196 last;
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?how-to-measure\.html$" /about/help.php?page_id=197 last;
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?how-to-order\.html$" /about/help.php?page_id=198 last;
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?how-to-track\.html$" /about/help.php?page_id=199 last;
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?contact-us\.html$" /about/help.php?page_id=203 last;
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?payment-method\.html$" /about/help.php?page_id=200 last;
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?shipping-info\.html$" /about/help.php?page_id=201 last;
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?return-policy\.html$" /about/help.php?page_id=202 last;
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?track-info\.html$"   /track_info.php?page_id=203 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?about-us\.html$" /about/help.php?page_id=231 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?terms-and-conditions\.html$" /about/help.php?page_id=232 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?privacy-policy\.html$" /about/help.php?page_id=233 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?return-policy\.html$" /about/help.php?page_id=234 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?faqs\.html$" /about/help.php?page_id=235 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?payment-method\.html$" /about/help.php?page_id=236 last;
 rewrite "^(?i)/(?:[A-Za-z]{2}\/)?email.php(.*)" /about/email.php;
-rewrite "(?i)/(?:[A-Za-z]{2}\/)?points\.html$" /about/help.php?page_id=229 last;
 
 #other
 if (!-e $request_filename) {
