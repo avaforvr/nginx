@@ -3,6 +3,9 @@ rewrite ^/favicon.ico /public/$theme/images/favicon.ico last;
 location ~* ^/public/[a-zA-Z]+/js/(languages|vendor) {
     root $prjroot;
 }
+location ~* ^/public/js {
+    root $prjroot;
+}
 location ~* ^/public/[a-zA-Z]+/(js|css|activity) {
     proxy_pass http://${domain}_devnode;
 }
