@@ -2,6 +2,7 @@ rewrite /booking\/?(.*)$  /booklist.php last;
 rewrite /sale\/?(.*)$  /promotion.php?code=sale last;
 rewrite /register.php(.*)$ /login.php?act=register last;
 
+rewrite ^(/..)?/merchant-([0-9]+)(.*)$ /merchant.php?m_id=$2&filter=$3 last;
 rewrite ^(/..)?/(p[0-9]+)(.*)$ /index.php?filter=$2$3 last;
 
 #category
