@@ -1,7 +1,8 @@
 rewrite /booking\/?(.*)$  /booklist.php last;
-rewrite /sale\/?(.*)$  /promotion.php?code=sale last;
+
 rewrite /register.php(.*)$ /login.php?act=register last;
 
+rewrite ^(/..)?/merchant-([^\/]*)\/?[^\/]*-mr([0-9]+)\/?(.*)$ /merchant.php?m_sn=$2&route_sn=$3&filter=$4 last;
 rewrite ^(/..)?/merchant-([^\/]*)\/?(.*)$ /merchant.php?m_sn=$2&filter=$3 last;
 rewrite ^(/..)?/(p[0-9]+)(.*)$ /index.php?filter=$2$3 last;
 
@@ -12,6 +13,12 @@ rewrite ^(/..)?/[^\/]*-cr([0-9]+)(.*)$ /category.php?route_sn=$2&filter=$3 last;
 rewrite ^(/..)?/[^\/]*-c([0-9]+)(.*)$ /list.php?cat_id=$2&filter=$3 last;
 rewrite ^(/..)?/[^\/]*-r([0-9]+)(.*)$ /list.php?route_sn=$2&filter=$3 last;
 rewrite ^(/..)?/amp/[^\/]*-r([0-9]+)(.*)$ /amp/list.php?route_sn=$2&filter=$3 last;
+rewrite ^(/..)?/Popular/(.*)$ /index.php?filter=$2 last;
+
+#sale
+rewrite /sale\/?[^\/]*-r([0-9]+)(.*)$ /promotion.php?code=sale&route_sn=$1&filter=$2 last;
+rewrite /sale\/?(.*)$  /promotion.php?code=sale&filter=$1 last;
+rewrite ^(/..)?/(promotion)\/?(.*)$ /promotion.php?code=$2&filter=$3 last;
 
 #group list
 rewrite ^(/..)?/[^\/]*-gl([0-9]+)(.*)$ /group/list.php?group_type=$2&filter=$3 last;
@@ -43,6 +50,11 @@ rewrite /qa\/[^\/]+-cid([0-9]+)-q([0-9]+)\/?$ /viewticket.php?cat_id=$1&goods_id
 rewrite /promotion/([^\/]+)\/?$  /promotion.php?code=$1 last;
 rewrite /(wholesale-weekly-deal)\/?(.*)$  /promotion.php?code=$1&filter=$2 last;
 
+#orders
+rewrite /account/orders\/?p([0-9]+)(.*)$ /account/orders.php?p=$1 last;
+rewrite /account/orders\/? /account/orders.php last;
+
+
 #return policy
 rewrite /return\/?$ /about/help.php?page_id=84 last;
 
@@ -67,6 +79,8 @@ rewrite "(?i)/(?:[A-Za-z]{2}\/)?privacy-policy\.html$" /about/help.php?page_id=2
 rewrite "(?i)/(?:[A-Za-z]{2}\/)?return-policy\.html$" /about/help.php?page_id=234 last;
 rewrite "(?i)/(?:[A-Za-z]{2}\/)?faqs\.html$" /about/help.php?page_id=235 last;
 rewrite "(?i)/(?:[A-Za-z]{2}\/)?payment-method\.html$" /about/help.php?page_id=236 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?contact-us\.html$" /about/help.php?page_id=237 last;
+rewrite "(?i)/(?:[A-Za-z]{2}\/)?how-to-order\.html$" /about/help.php?page_id=238 last;
 rewrite "^(?i)/(?:[A-Za-z]{2}\/)?email.php(.*)" /about/email.php;
 
 #other
