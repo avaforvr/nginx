@@ -13,6 +13,7 @@ rewrite ^(/..)?/[^\/]*-cr([0-9]+)(.*)$ /category.php?route_sn=$2&filter=$3 last;
 rewrite ^(/..)?/[^\/]*-c([0-9]+)(.*)$ /list.php?cat_id=$2&filter=$3 last;
 rewrite ^(/..)?/[^\/]*-r([0-9]+)(.*)$ /list.php?route_sn=$2&filter=$3 last;
 rewrite ^(/..)?/amp/[^\/]*-r([0-9]+)(.*)$ /amp/list.php?route_sn=$2&filter=$3 last;
+rewrite ^(/..)?/amp/Popular/(.*)$ /amp/index.php?filter=$2 last;
 rewrite ^(/..)?/Popular/(.*)$ /index.php?filter=$2 last;
 
 #sale
