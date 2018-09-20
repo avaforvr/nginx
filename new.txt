@@ -4,7 +4,7 @@ server {
 
 		#access_log      logs/access-esmeralda-dev.log main;
 
-		set $fs_root    D:/zwnmp/web/esmeralda-editor;
+		set $fs_root    D:/workspace/esmeralda-editor;
 		set $app_root   $fs_root/app/esmeralda-editor;
 		set $ui_root    $app_root/ui;
 		set $view_root  $app_root/view;
